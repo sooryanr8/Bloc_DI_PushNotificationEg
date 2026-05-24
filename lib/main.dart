@@ -8,7 +8,7 @@ import 'core/di/injection_container.dart';
 import 'core/notification/local_notification_service.dart';
 import 'features/patient/presentation/bloc/patient_state.dart';
 
-void main() async {
+void startApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   init();
