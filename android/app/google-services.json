@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:832770901417:android:d176a88349a5a451efb0b8",
+        "mobilesdk_app_id": "1:832770901417:android:57e269fe6622c02eefb0b8",
         "android_client_info": {
-          "package_name": "com.example.test1"
+          "package_name": "com.soorya.test1"
         }
       },
       "oauth_client": [],

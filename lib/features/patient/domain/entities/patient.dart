@@ -1,11 +1,10 @@
-class Patient
-{
+class Patient {
+
   final String id;
   final String name;
 
-  const Patient(
-  {
+  Patient({
     required this.id,
-    required this.name
+    required this.name,
   });
 }
