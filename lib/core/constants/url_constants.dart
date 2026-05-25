@@ -8,4 +8,6 @@ class UrlConstants {
   static String get keycloakToken =>
       "${AppConfig.authBaseUrl}/realms/test1/protocol/openid-connect/token";
 
+  static String get keycloakLogout =>
+      "${AppConfig.authBaseUrl}/realms/test1/protocol/openid-connect/logout";
 }

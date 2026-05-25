@@ -33,7 +33,14 @@ class AuthRepositoryImpl
       refreshToken:
       refreshToken,
     );
-
   }
 
+  @override
+  Future<void> logout({
+    required String refreshToken,
+  }) {
+    return remote.logout(
+      refreshToken: refreshToken,
+    );
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/auth/session_manager.dart';
 import '../../../../core/di/injection_container.dart';
 import '../../../../core/notification/local_notification_service.dart';
 
@@ -15,7 +16,6 @@ class PatientScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<PatientBloc>(),
-
       child: const _PatientView(),
     );
   }
@@ -24,12 +24,62 @@ class PatientScreen extends StatelessWidget {
 class _PatientView extends StatelessWidget {
   const _PatientView();
 
+  Future<void> _logout(BuildContext context) async {
+    final confirm = await showDialog<bool>(
+      context: context,
+
+      builder: (_) => AlertDialog(
+        title: const Text("Logout"),
+
+        content: const Text("Are you sure you want to logout?"),
+
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context, false);
+            },
+
+            child: const Text("Cancel"),
+          ),
+
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context, true);
+            },
+
+            child: const Text("Logout"),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm != true) return;
+
+    await sl<SessionManager>().logout();
+
+    if (!context.mounted) return;
+
+    Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<PatientBloc>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Patient App")),
+      appBar: AppBar(
+        title: const Text("Patient App"),
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+
+            onPressed: () {
+              _logout(context);
+            },
+          ),
+        ],
+      ),
 
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

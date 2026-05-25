@@ -64,6 +64,14 @@ class SessionManager {
   }
 
   Future<void> logout() async {
+    try {
+      final refreshToken = await storage.getRefresh();
+
+      if (refreshToken != null) {
+        await refresh.call(refreshToken);
+      }
+    } catch (_) {}
+
     await storage.clear();
   }
 }

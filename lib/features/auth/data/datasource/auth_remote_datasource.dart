@@ -11,4 +11,7 @@ abstract class AuthRemoteDatasource {
     required String refreshToken,
   });
 
+  Future<void> logout({
+    required String refreshToken,
+  });
 }
