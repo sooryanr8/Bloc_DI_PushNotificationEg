@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'core/di/injection_container.dart';
 
+import 'core/logger/logger_helper.dart';
 import 'core/notification/firebase_notification_service.dart';
 import 'core/notification/local_notification_service.dart';
 
@@ -12,6 +13,8 @@ void startApp() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
+
+  await LoggerHelper.initialize();
 
   init();
 
