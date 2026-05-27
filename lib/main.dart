@@ -7,6 +7,7 @@ import 'core/logger/logger_helper.dart';
 import 'core/notification/firebase_notification_service.dart';
 import 'core/notification/local_notification_service.dart';
 
+import 'core/routes/app_routes.dart';
 import 'features/auth/presentation/screens/splash_screen.dart';
 
 void startApp() async {
@@ -32,8 +33,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      home: SplashScreen(),
+      initialRoute: AppRoutes.splash,
+      onGenerateRoute:
+      AppRoutes.generateRoute,
     );
   }
 }

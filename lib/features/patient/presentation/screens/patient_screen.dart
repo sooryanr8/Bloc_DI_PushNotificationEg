@@ -5,6 +5,7 @@ import '../../../../core/auth/session_manager.dart';
 import '../../../../core/di/injection_container.dart';
 import '../../../../core/notification/local_notification_service.dart';
 
+import '../../../../core/routes/app_routes.dart';
 import '../bloc/patient_bloc.dart';
 import '../bloc/patient_event.dart';
 import '../bloc/patient_state.dart';
@@ -59,7 +60,11 @@ class _PatientView extends StatelessWidget {
 
     if (!context.mounted) return;
 
-    Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false);
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      AppRoutes.login,
+          (_) => false,
+    );
   }
 
   @override
